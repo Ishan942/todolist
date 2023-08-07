@@ -17,7 +17,9 @@ const workItems = [];
 
 async function startServer() {
   try {
-    await mongoose.connect("mongodb://127.0.0.1:27017/tolistDB");
+    await mongoose.connect(
+      "mongodb+srv://ishansirdeshpande:ishan111@cluster0.pxtc8ez.mongodb.net/toListDB"
+    );
     console.log("Connected to MongoDB");
 
     const itemSchema = new mongoose.Schema({
@@ -64,12 +66,11 @@ async function startServer() {
     app.post("/", async function (req, res) {
       const itemname = req.body.newItem;
       const list_title = req.body.list;
-
       const newtask = new Task({
         name: itemname,
       });
 
-      if (list_title === "today") {
+      if (list_title === "Today") {
         await newtask.save();
         res.redirect("/");
       } else {
