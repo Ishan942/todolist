@@ -8,6 +8,8 @@ import _ from "lodash";
 
 const app = express();
 
+const PORT = process.env.PORT || 3000;
+
 app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -107,7 +109,6 @@ async function startServer() {
 
       if (list_title === "Today") {
         await Task.deleteOne({ _id: req.body.checkbox });
-        console.log(req.body);
 
         res.redirect("/");
       } else {
@@ -123,7 +124,7 @@ async function startServer() {
       res.render("about");
     });
 
-    app.listen(3000, function () {
+    app.listen(PORT, function () {
       console.log("Server started on port 3000");
     });
   } catch (error) {
