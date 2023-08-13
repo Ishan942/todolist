@@ -20,7 +20,7 @@ const workItems = [];
 async function startServer() {
   try {
     await mongoose.connect(
-      "mongodb+srv://ishansirdeshpande:ishan111@cluster0.pxtc8ez.mongodb.net/toListDB"
+      "mongodburl"
     );
     console.log("Connected to MongoDB");
 
